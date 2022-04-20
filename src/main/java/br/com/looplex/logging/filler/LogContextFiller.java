@@ -4,18 +4,28 @@ import br.com.looplex.logging.LogContext;
 import br.com.looplex.logging.annotations.LogLevel;
 import lombok.AllArgsConstructor;
 
+import java.time.Instant;
+
+import static java.util.Objects.nonNull;
+
 @AllArgsConstructor
 public class LogContextFiller implements ILogContextFiller {
 
-    private String args;
-    private String caller;
-    private String methodName;
-
     public LogContext fill(LogContext logContext) {
-        logContext.setArgs(args);
-        logContext.setCaller(caller);
-        logContext.setMethodName(methodName);
-        logContext.setLogLevel(LogLevel.INFO);
+        fillThrowableData(logContext);
+        logContext.setCaller(logContext.getBody().get("caller"));
+        logContext.setMethodName(logContext.getBody().get("methodName"));
+        logContext.setArgs(logContext.getBody().get("args"));
+        logContext.setLogLevel(LogLevel.valueOf(logContext.getBody().get("logLevel")));
+        return logContext;
+    }
+
+    private LogContext fillThrowableData(LogContext logContext) {
+        Throwable throwable = logContext.getThrowable();
+        if(nonNull(throwable)) {
+            logContext.setTimestamp(Instant.now().toString());
+            logContext.setMessage(throwable.getMessage());
+        }
         return logContext;
     }
 
