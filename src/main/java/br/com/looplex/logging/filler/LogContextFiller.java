@@ -2,13 +2,11 @@ package br.com.looplex.logging.filler;
 
 import br.com.looplex.logging.LogContext;
 import br.com.looplex.logging.annotations.LogLevel;
-import lombok.AllArgsConstructor;
 
 import java.time.Instant;
 
 import static java.util.Objects.nonNull;
 
-@AllArgsConstructor
 public class LogContextFiller implements ILogContextFiller {
 
     public LogContext fill(LogContext logContext) {
