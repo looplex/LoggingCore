@@ -15,18 +15,9 @@ public class LogHandler implements ILogHandler {
     private ILogPrinter logPrinter;
 
     public void handle(LogContext logContext) {
-        saveData(logContext);
         logContextFiller.fill(logContext);
         logFormatter.format(logContext);
         logPrinter.print(logContext);
-    }
-
-    private LogContext saveData(LogContext logContext) {
-        logContext.getBody().put("caller", "LogHandler");
-        logContext.getBody().put("methodName", "handle");
-        logContext.getBody().put("args", "LogContext");
-        logContext.getBody().put("logLevel", LogLevel.INFO.name());
-        return logContext;
     }
 
 }
