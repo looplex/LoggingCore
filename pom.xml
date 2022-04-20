@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.com.looplex</groupId>
-    <artifactId>LoggingCore</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>logging-core</artifactId>
+    <version>1.0</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -34,6 +34,28 @@
             <version>3.22.0</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
+
+    <build>
+        <finalName>LoggingCore</finalName>
+    </build>
+    <repositories>
+        <repository>
+            <id>looplex</id>
+            <url>https://pkgs.dev.azure.com/looplex/_packaging/looplex/maven/v1</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>looplex</id>
+            <url>https://pkgs.dev.azure.com/looplex/_packaging/looplex/maven/v1</url>
+        </repository>
+    </distributionManagement>
 </project>

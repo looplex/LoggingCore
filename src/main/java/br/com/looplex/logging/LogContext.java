@@ -20,7 +20,7 @@ public class LogContext {
     private String timestamp = String.valueOf(Instant.now());
     private String message;
     private LogLevel logLevel;
-    private Exception exception;
+    private Throwable throwable;
     private Map<String, String> body = new HashMap<>();
     
 }
