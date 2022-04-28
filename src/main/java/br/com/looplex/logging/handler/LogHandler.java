@@ -6,11 +6,13 @@ import br.com.looplex.logging.formatter.ILogFormatter;
 import br.com.looplex.logging.printer.ILogPrinter;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
 public class LogHandler implements ILogHandler, Serializable {
 
     private ILogFormatter logFormatter;
