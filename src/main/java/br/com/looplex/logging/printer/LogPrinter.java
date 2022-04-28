@@ -4,10 +4,12 @@ import br.com.looplex.logging.LogContext;
 import br.com.looplex.logging.annotations.LogLevel;
 import lombok.extern.java.Log;
 
+import java.io.Serializable;
+
 import static java.lang.String.format;
 
 @Log
-public class LogPrinter implements ILogPrinter {
+public class LogPrinter implements ILogPrinter, Serializable {
 
     public void print(LogContext logContext) {
         LogLevel logLevel = logContext.getLogLevel();

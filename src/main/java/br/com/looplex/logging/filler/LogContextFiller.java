@@ -3,7 +3,9 @@ package br.com.looplex.logging.filler;
 import br.com.looplex.logging.LogContext;
 import br.com.looplex.logging.annotations.LogLevel;
 
-public class LogContextFiller implements ILogContextFiller {
+import java.io.Serializable;
+
+public class LogContextFiller implements ILogContextFiller, Serializable {
 
     public LogContext fill(LogContext logContext) {
         logContext.setCaller("LogHandler");
