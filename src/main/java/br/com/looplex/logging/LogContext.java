@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -19,5 +21,6 @@ public class LogContext {
     private String message;
     private LogLevel logLevel;
     private Throwable throwable;
+    private Map<String, String> body = new HashMap<>();
 
 }
