@@ -15,11 +15,15 @@ public class LogPrinter implements ILogPrinter, Serializable {
         LogLevel logLevel = logContext.getLogLevel();
         String message = logContext.getMessage();
         try {
-            if(logLevel == LogLevel.WARNING) log.info(message);
+            if(shouldLogToWarning(logLevel)) log.warning(message);
             else log.info(message);
         } catch(IllegalArgumentException exception) {
             log.info(format("%s level doesn't exist. Message: [%s]", logLevel.name(), message));
         }
+    }
+
+    private boolean shouldLogToWarning(LogLevel logLevel) {
+        return logLevel == LogLevel.WARNING || logLevel == LogLevel.ERROR;
     }
 
 }
